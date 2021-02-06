@@ -7,7 +7,8 @@
       ].background,
     }"
   >
-    <v-container
+    <div id="parallax" />
+    <!-- <v-container
       class="loading"
       :style="{
         background: this.$vuetify.theme.themes[
@@ -19,13 +20,14 @@
         <h1>Herzlich Willkommen</h1>
         <h2>auf bambulti.de</h2>
       </v-flex>
-    </v-container>
+    </v-container> -->
     <v-navigation-drawer
       v-model="drawer"
       :mini-variant="miniVariant"
       fixed
       app
       color="secondary"
+      class="transparency"
     >
       <v-list>
         <v-list-item
@@ -73,16 +75,16 @@
       </v-container>
     </v-main>
 
-    <v-footer app color="accent">
-      <v-btn icon to="/">
+    <v-footer app color="accent" class="transparency" elevation="16">
+      <v-btn icon small to="/">
         <v-icon>mdi-home</v-icon>
       </v-btn>
       <v-spacer />
-      <v-btn to="/impressum" color="transparent" elevation="0">
+      <v-btn small to="/impressum" color="transparent" elevation="0">
         &copy; {{ new Date().getFullYear() }} - <strong>Bambulti</strong>
       </v-btn>
       <v-spacer />
-      <v-btn icon href="mailto:kontakt@bambulti.de">
+      <v-btn icon small href="mailto:kontakt@bambulti.de">
         <v-icon>mdi-email</v-icon>
       </v-btn>
     </v-footer>
@@ -102,13 +104,33 @@ export default {
         },
       ],
       miniVariant: false,
+      parallax: null,
     }
+  },
+  mounted() {
+    this.parallax = document.querySelector('#parallax')
+    window.addEventListener('scroll', () => {
+      this.parallax.style.transform = `translateY(${-window.scrollY * 0.5}px)`
+    })
   },
 }
 </script>
 
 <style scoped>
-.loading {
+#parallax {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 300vh;
+  width: 100vw;
+  max-width: 100%;
+  opacity: 0.35;
+  background-repeat: repeat;
+  background-image: url('../static/img/background_pattern.png');
+  overflow-y: hidden;
+}
+
+/* .loading {
   position: fixed;
   top: 0;
   left: 0;
@@ -129,13 +151,17 @@ export default {
   left: 50%;
   margin-top: -15vh;
   margin-left: -15vw;
-}
+} */
 .variant-button {
   position: absolute;
   right: 2px;
   bottom: 2px;
 }
-@keyframes fadeOut {
+.transparency {
+  opacity: 0.8;
+}
+
+/* @keyframes fadeOut {
   0% {
     opacity: 1;
     visibility: visible;
@@ -147,5 +173,5 @@ export default {
     opacity: 0;
     visibility: hidden;
   }
-}
+} */
 </style>

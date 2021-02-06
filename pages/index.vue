@@ -17,9 +17,22 @@
         </v-col>
       </v-row>
     </v-container>
-    <v-container class="fill-height fill-width">
+    <v-container
+      v-if="$vuetify.breakpoint.smAndDown"
+      class="fill-height fill-width"
+    >
       <v-row justify="center" align="center">
-        <v-col cols="12" sm="6">
+        <v-col cols="12">
+          <v-img
+            contain
+            :aspect-ratio="135 / 169"
+            max-width="500"
+            class="Bottle mx-auto"
+            alt="Bambultea-Flask"
+            src="img/bambultea-flask-detail.jpg"
+          />
+        </v-col>
+        <v-col cols="12">
           <v-flex class="text-center">
             <h1>Die Bambultea-Flask</h1>
             <v-divider />
@@ -30,7 +43,22 @@
             </p>
           </v-flex>
         </v-col>
-        <v-col cols="12" sm="6">
+      </v-row>
+    </v-container>
+    <v-container v-else class="fill-height fill-width">
+      <v-row justify="center" align="center">
+        <v-col cols="6">
+          <v-flex class="text-center">
+            <h1>Die Bambultea-Flask</h1>
+            <v-divider />
+            <p>
+              Unser erstes Produkt war die Bambultea-Flask, eine Thermosflasche
+              aus Edelstahl und echtem Bambus mit 500ml Fassungsverm&ouml;gen,
+              Teesieb und zwei s&uuml;&szlig;en Babypandas als Aufdruck.
+            </p>
+          </v-flex>
+        </v-col>
+        <v-col cols="6">
           <v-img
             contain
             :aspect-ratio="135 / 169"
