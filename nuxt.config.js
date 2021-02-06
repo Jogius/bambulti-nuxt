@@ -56,7 +56,7 @@ export default {
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
     theme: {
-      dark: false,
+      dark: true,
       themes: {
         dark: {
           primary: '#3d5933',
@@ -76,7 +76,7 @@ export default {
           warning: '#eccf15',
           error: '#ef601c',
           success: '#86df78',
-          background: '#ccc',
+          background: '#777',
         },
       },
     },
