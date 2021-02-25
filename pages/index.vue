@@ -1,12 +1,12 @@
 <template>
   <v-container>
-    <v-container class="fill-height fill-width">
+    <div id="parallax" />
+    <v-container class="vertical-element">
       <v-row justify="center" align="center">
         <v-col cols="12">
           <v-flex class="text-center">
             <v-img
               contain
-              max-height="300"
               max-width="300"
               class="Logo mx-auto slide-up"
               alt="Bambulti Logo"
@@ -17,82 +17,81 @@
         </v-col>
       </v-row>
     </v-container>
+
     <v-container
-      v-if="$vuetify.breakpoint.smAndDown"
-      class="fill-height fill-width"
+      v-for="(element, i) in elements"
+      :key="i"
+      class="vertical-element"
     >
-      <v-row justify="center" align="center">
+      <v-row
+        v-if="$vuetify.breakpoint.smAndDown"
+        justify="center"
+        align="center"
+      >
         <v-col cols="12">
           <v-img
             contain
-            :aspect-ratio="135 / 169"
             max-width="500"
-            class="Bottle mx-auto"
+            class="image mx-auto"
+            :class="I % 2 == 0 ? 'slide-' : '6'"
             alt="Bambultea-Flask"
-            src="img/bambultea-flask-detail.jpg"
+            :src="element.img"
           />
         </v-col>
         <v-col cols="12">
           <v-flex class="text-center">
-            <h1>Die Bambultea-Flask</h1>
+            <h1>{{ element.title }}</h1>
             <v-divider />
             <p>
-              Unser erstes Produkt war die Bambultea-Flask, eine Thermosflasche
-              aus Edelstahl und echtem Bambus mit 500ml Fassungsverm&ouml;gen,
-              Teesieb und zwei s&uuml;&szlig;en Babypandas als Aufdruck.
+              {{ element.text }}
             </p>
           </v-flex>
         </v-col>
       </v-row>
-    </v-container>
-    <v-container v-else class="fill-height fill-width">
-      <v-row justify="center" align="center">
-        <v-col cols="6">
-          <v-flex class="text-center">
-            <h1 class="slide-left">Die Bambultea-Flask</h1>
-            <v-divider />
-            <p class="slide-right">
-              Unser erstes Produkt war die Bambultea-Flask, eine Thermosflasche
-              aus Edelstahl und echtem Bambus mit 500ml Fassungsverm&ouml;gen,
-              Teesieb und zwei s&uuml;&szlig;en Babypandas als Aufdruck.
-            </p>
-          </v-flex>
-        </v-col>
-        <v-col cols="6">
-          <v-img
-            contain
-            :aspect-ratio="135 / 169"
-            max-width="500"
-            class="Bottle mx-auto slide-left"
-            alt="Bambultea-Flask"
-            src="img/bambultea-flask-detail.jpg"
-          />
-        </v-col>
-      </v-row>
-    </v-container>
-    <v-container class="fill-height fill-width">
-      <v-row justify="center" align="center">
-        <v-col cols="12" sm="6">
-          <v-img
-            contain
-            :aspect-ratio="1 / 1"
-            max-width="500"
-            class="Bottle mx-auto slide-right"
-            alt="Bambulti Team"
-            src="img/team.jpg"
-          />
-        </v-col>
-        <v-col cols="12" sm="6">
-          <v-flex class="text-center">
-            <h1 class="slide-right">&Uuml;ber uns</h1>
-            <v-divider />
-            <p class="slide-left">
-              Wir sind das Bambulti-Team, eine neunk&ouml;pfige Gruppe aus
-              Sch&uuml;lern des F.-F.-Runge Gymnasiums in Oranienburg.
-            </p>
-          </v-flex>
-        </v-col>
-      </v-row>
+      <v-container v-else>
+        <v-row v-if="i % 2 == 0" justify="center" align="center">
+          <v-col cols="6">
+            <v-flex class="text-center">
+              <h1 class="slide-left">{{ element.title }}</h1>
+              <v-divider class="slide-up" />
+              <p class="slide-right">
+                {{ element.text }}
+              </p>
+            </v-flex>
+          </v-col>
+          <v-col cols="6">
+            <v-img
+              contain
+              max-width="500"
+              class="image mx-auto slide-left"
+              :class="I % 2 == 0 ? 'slide-' : '6'"
+              alt="Bambultea-Flask"
+              :src="element.img"
+            />
+          </v-col>
+        </v-row>
+        <v-row v-else justify="center" align="center">
+          <v-col cols="6">
+            <v-img
+              contain
+              max-width="500"
+              class="image mx-auto slide-right"
+              :class="I % 2 == 0 ? 'slide-' : '6'"
+              alt="Bambultea-Flask"
+              :src="element.img"
+            />
+          </v-col>
+          <v-col cols="6">
+            <v-flex class="text-center">
+              <h1 class="slide-left">{{ element.title }}</h1>
+              <v-divider class="slide-up" />
+              <p class="slide-right">
+                {{ element.text }}
+              </p>
+            </v-flex>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-container>
   </v-container>
 </template>
@@ -100,47 +99,91 @@
 <script>
 import Scrollreveal from 'scrollreveal'
 export default {
+  data() {
+    return {
+      elements: [
+        {
+          title: 'Die Bambultea Flask',
+          text:
+            'Unser erstes Produkt war die Bambultea-Flask, eine Thermosflasche aus Edelstahl und echtem Bambus mit 500ml Fassungsvermögen, Teesieb und zwei süßen Babypandas als Aufdruck.',
+          img: 'img/bambultea-flask.jpg',
+        },
+        {
+          title: 'Über uns',
+          text:
+            'Wir sind das Bambulti-Team, eine neunköpfige Gruppe aus Schülern des F.-F.-Runge Gymnasiums in Oranienburg.',
+          img: 'img/team.jpg',
+        },
+        {
+          title: 'Das Projekt',
+          text:
+            'Geleitet wird das Projekt von JUNIOR gGmbH. Auf Bundesebene wird JUNIOR durch das Bundesministerium für Wirtschaft und Energie, das Institut der deutschen Wirtschaft, Gesamtmetall, die AXA, die Deloitte-Stiftung, AT&T und die Citigroup unterstützt.',
+          img: 'img/junior-logo.png',
+        },
+      ],
+      parallax: null,
+    }
+  },
+  head() {
+    return {
+      title: 'Startseite',
+    }
+  },
   mounted() {
-    Scrollreveal().reveal('.slide-up', {
-      origin: 'bottom',
-      delay: 200,
-      distance: '150px',
-      scale: 0.5,
-    })
-    Scrollreveal().reveal('.slide-left', {
-      origin: 'right',
-      delay: 400,
-      distance: '150px',
-      opacity: 0,
-      scale: 0.5,
-    })
-    Scrollreveal().reveal('.slide-right', {
-      origin: 'left',
-      delay: 400,
-      distance: '150px',
-      opacity: 0,
-      scale: 0.5,
-    })
+    if (!this.$vuetify.breakpoint.smAndDown) {
+      Scrollreveal().reveal('.slide-up', {
+        origin: 'bottom',
+        delay: 200,
+        distance: '150px',
+        scale: 0.5,
+      })
+      Scrollreveal().reveal('.slide-left', {
+        origin: 'right',
+        delay: 400,
+        distance: '150px',
+        opacity: 0,
+        scale: 0.5,
+      })
+      Scrollreveal().reveal('.slide-right', {
+        origin: 'left',
+        delay: 400,
+        distance: '150px',
+        opacity: 0,
+        scale: 0.5,
+      })
+      this.parallax = document.querySelector('#parallax')
+      window.addEventListener('scroll', () => {
+        this.parallax.style.transform = `translateY(${-window.scrollY * 0.3}px)`
+      })
+    }
   },
 }
 </script>
 
 <style scoped>
+#parallax {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 300vh;
+  width: 100vw;
+  max-width: 100%;
+  opacity: 0.35;
+  background-repeat: repeat;
+  background-image: url('../static/img/background_pattern.png');
+  overflow-y: hidden;
+}
 .Logo {
   border-radius: 50%;
   pointer-events: none;
-  margin-left: auto;
-  margin-top: auto;
 }
-.Bottle {
+.image {
   border-radius: 15px;
   pointer-events: none;
 }
-.fill-height {
-  height: 90vh;
-}
-.fill-width {
-  width: 80vw;
+.vertical-element {
+  width: 100vw;
   max-width: 100%;
+  margin: 10vh 0;
 }
 </style>
