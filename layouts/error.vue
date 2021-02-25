@@ -1,5 +1,6 @@
 <template>
   <v-flex class="text-center">
+    <v-icon x-large>mdi-emoticon-sad-outline</v-icon>
     <h1 v-text="error.statusCode === 404 ? pageNotFound : otherError" />
     <v-btn x-large icon to="/"><v-icon x-large>mdi-home</v-icon></v-btn>
   </v-flex>

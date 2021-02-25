@@ -18,7 +18,8 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Marketing-focused website for Bambulti built with nuxt',
+        content:
+          'Wir sind die nachhaltige Schülerfirma Bambulti aus Oranienburg, die Produkte aus Bambus auf den lokalen Markt bringen will.',
       },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],

@@ -7,70 +7,45 @@
       ].background,
     }"
   >
-    <div id="parallax" />
-    <!-- <v-container
-      class="loading"
-      :style="{
-        background: this.$vuetify.theme.themes[
-          this.$vuetify.theme.dark ? 'dark' : 'light'
-        ].background,
-      }"
-    >
-      <v-flex class="fixed-center">
-        <h1>Herzlich Willkommen</h1>
-        <h2>auf bambulti.de</h2>
-      </v-flex>
-    </v-container> -->
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
+    <v-app-bar
       fixed
       app
       color="secondary"
       class="transparency"
+      elevate-on-scroll
     >
-      <v-list>
-        <v-list-item
+      <v-container v-if="$vuetify.breakpoint.smAndDown">
+        <v-app-bar-nav-icon
           v-for="(item, i) in headerItems"
           :key="i"
           :to="item.to"
-          router
-          exact
         >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
+          <v-icon>{{ item.icon }}</v-icon>
+        </v-app-bar-nav-icon>
+      </v-container>
+      <v-container v-else>
         <v-btn
-          icon
-          x-large
-          class="variant-button"
-          @click.stop="miniVariant = !miniVariant"
+          v-for="(item, i) in headerItems"
+          :key="i"
+          :to="item.to"
+          color="transparent"
+          elevation="0"
         >
-          <v-icon>
-            mdi-{{ `chevron-${miniVariant ? 'right' : 'left'}` }}
-          </v-icon>
+          <v-icon>{{ item.icon }}</v-icon
+          >&nbsp;-&nbsp;{{ item.title }}
         </v-btn>
-      </v-list>
-    </v-navigation-drawer>
-
-    <v-app-bar
-      fixed
-      app
-      color="transparent"
-      elevate-on-scroll
-      collapse-on-scroll
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      </v-container>
       <v-spacer />
-      <v-switch v-model="$vuetify.theme.dark" inset hide-details></v-switch>
+      <v-switch
+        v-model="$vuetify.theme.dark"
+        inset
+        hide-details
+        color="info"
+      ></v-switch>
     </v-app-bar>
 
     <v-main>
-      <v-container>
+      <v-container class="main-wrapper">
         <nuxt />
       </v-container>
     </v-main>
@@ -95,83 +70,28 @@
 export default {
   data() {
     return {
-      drawer: false,
       headerItems: [
         {
-          icon: 'mdi-home',
-          title: 'Willkommen',
           to: '/',
+          icon: 'mdi-home',
+          title: 'Startseite',
+        },
+        {
+          to: '/bambultea-flask',
+          icon: 'mdi-bottle-wine-outline',
+          title: 'Die Bambultea Flask',
         },
       ],
-      miniVariant: false,
-      parallax: null,
     }
-  },
-  mounted() {
-    this.parallax = document.querySelector('#parallax')
-    window.addEventListener('scroll', () => {
-      this.parallax.style.transform = `translateY(${-window.scrollY * 0.5}px)`
-    })
   },
 }
 </script>
 
 <style scoped>
-#parallax {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 300vh;
-  width: 100vw;
-  max-width: 100%;
-  opacity: 0.35;
-  background-repeat: repeat;
-  background-image: url('../static/img/background_pattern.png');
-  overflow-y: hidden;
-}
-
-/* .loading {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  width: 100vw;
-  max-width: 100%;
-  z-index: 6;
-  text-align: center;
-  opacity: 0;
-  visibility: hidden;
-  animation: fadeOut 4s;
-}
-.fixed-center {
-  position: fixed;
-  width: 30vw;
-  height: 30vh;
-  top: 50%;
-  left: 50%;
-  margin-top: -15vh;
-  margin-left: -15vw;
-} */
-.variant-button {
-  position: absolute;
-  right: 2px;
-  bottom: 2px;
-}
 .transparency {
   opacity: 0.8;
 }
-
-/* @keyframes fadeOut {
-  0% {
-    opacity: 1;
-    visibility: visible;
-  }
-  75% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    visibility: hidden;
-  }
-} */
+.main-wrapper {
+  margin-top: 10vh;
+}
 </style>
