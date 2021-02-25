@@ -4,8 +4,13 @@
 
 [[redirects]]
   from = "/*"
-  to = "/"
+  to = "/200"
   status = 404
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
 
 [[plugins]]
   package = "netlify-plugin-hashfiles"
