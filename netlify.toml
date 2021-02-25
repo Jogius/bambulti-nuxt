@@ -1,0 +1,25 @@
+[build]
+  publish = "dist/"
+  command = "yarn build"
+
+[[redirects]]
+  from = "/*"
+  to = "/"
+  status = 404
+
+[[plugins]]
+  package = "netlify-plugin-hashfiles"
+
+[[plugins]]
+  package = "@netlify/plugin-sitemap"
+
+[[plugins]]
+  package = "netlify-plugin-submit-sitemap"
+
+  [plugins.inputs]
+    baseUrl = "https://bambulti.de"
+    providers = [
+      "google",
+      "bing",
+      "yandex"
+    ]
