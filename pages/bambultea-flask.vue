@@ -72,7 +72,7 @@ export default {
         {
           title: 'Die Produktion',
           text:
-            'Produziert wird unsere Flasche von eco-drinkware, einem Flaschenproduzenten in Zheijiang, China. Eine Produktion in China erscheint vielleicht nicht intiutiv, hauptaugenmerk liegt bei uns allerdings auf den für die Produktion genutzten Materialien. Diese sind in China lokaler, der Transportfootprint ist dadurch also ähnlich.',
+            'Produziert wird unsere Flasche von eco-drinkware, einem Flaschenproduzenten in Zheijiang, China. Eine Produktion in China erscheint vielleicht nicht intuitiv, hauptaugenmerk liegt bei uns allerdings auf den für die Produktion genutzten Materialien. Diese sind in China lokaler, der Transportfootprint ist dadurch also ähnlich.',
           img: 'img/werkzeug.png',
         },
       ],
