@@ -6,9 +6,17 @@
     <v-card>
       <v-card-title>Websiteverantwortlicher</v-card-title>
       <v-card-text>
-        Julius Makowski<br />
+        Julius Makowski im Auftrag vom Schülerunternehmen Bambulti<br />
         Mittelstra&szlig;e 16e<br />
         16540 Hohen Neuendorf
+      </v-card-text>
+    </v-card>
+    <v-card>
+      <v-card-title>Kontakt JUNIOR gGmbH</v-card-title>
+      <v-card-text>
+        Institut der deutschen Wirtschaft Köln JUNIOR gGmbH
+        Website: <a href="https://www.junior-grogramme.de">https://www.junior-programme.de</a><br />
+        E-Mail: <a href="mailto:karabenli@iwkoeln.de">karabenli@iwkoeln.de</a>
       </v-card-text>
     </v-card>
     <v-card>
