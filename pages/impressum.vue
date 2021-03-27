@@ -1,9 +1,11 @@
 <template>
   <v-container>
     <div id="parallax" />
-    <h1>Impressum</h1>
-    <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
-    <v-card>
+    <v-card color="transparent" elevation="0">
+      <h1>Impressum</h1>
+      <h2>Angaben gem&auml;&szlig; &sect; 5 TMG</h2>
+    </v-card>
+    <v-card color="primary">
       <v-card-title>Websiteverantwortlicher</v-card-title>
       <v-card-text>
         Julius Makowski im Auftrag vom Schülerunternehmen Bambulti<br />
@@ -11,22 +13,30 @@
         16540 Hohen Neuendorf
       </v-card-text>
     </v-card>
-    <v-card>
+    <v-card color="primary">
       <v-card-title>Kontakt JUNIOR gGmbH</v-card-title>
       <v-card-text>
-        Institut der deutschen Wirtschaft Köln JUNIOR gGmbH
-        Website: <a href="https://www.junior-grogramme.de">https://www.junior-programme.de</a><br />
-        E-Mail: <a href="mailto:karabenli@iwkoeln.de">karabenli@iwkoeln.de</a>
+        Institut der deutschen Wirtschaft Köln JUNIOR gGmbH Website:
+        <a href="https://www.junior-grogramme.de"
+          >https://www.junior-programme.de</a
+        ><br />
+        E-Mail:
+        <a href="mailto:karabenli@iwkoeln.de" class="warning--text"
+          >karabenli@iwkoeln.de</a
+        >
       </v-card-text>
     </v-card>
-    <v-card>
+    <v-card color="primary">
       <v-card-title>Kontakt</v-card-title>
       <v-card-text>
         Telefon: 017643543921<br />
-        E-Mail: <a href="mailto:kontakt@bambulti.de">kontakt@bambulti.de</a>
+        E-Mail:
+        <a href="mailto:kontakt@bambulti.de" class="warning--text"
+          >kontakt@bambulti.de</a
+        >
       </v-card-text>
     </v-card>
-    <v-card>
+    <v-card color="primary">
       <v-card-title>
         Verbraucher&shy;streit&shy;beilegung/Universal&shy;schlichtungs&shy;stelle
       </v-card-title>
@@ -35,7 +45,7 @@
         vor einer Verbraucherschlichtungsstelle teilzunehmen.
       </v-card-text>
     </v-card>
-    <v-card>
+    <v-card color="primary">
       <v-card-title>Haftung f&uuml;r Inhalte</v-card-title>
       <v-card-text>
         Als Diensteanbieter sind wir gem&auml;&szlig; &sect; 7 Abs.1 TMG
@@ -55,7 +65,7 @@
         Inhalte umgehend entfernen.
       </v-card-text>
     </v-card>
-    <v-card>
+    <v-card color="primary">
       <v-card-title>Haftung f&uuml;r Links</v-card-title>
       <v-card-text>
         Unser Angebot enth&auml;lt Links zu externen Websites Dritter, auf deren
@@ -74,7 +84,7 @@
         entfernen.
       </v-card-text>
     </v-card>
-    <v-card>
+    <v-card color="primary">
       <v-card-title>Urheberrecht</v-card-title>
       <v-card-text>
         Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen
@@ -134,6 +144,5 @@ export default {
 }
 .v-card {
   margin-top: 12px;
-  opacity: 0.9;
 }
 </style>

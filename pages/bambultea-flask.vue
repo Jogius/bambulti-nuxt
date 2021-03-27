@@ -12,9 +12,8 @@
             <v-img
               contain
               max-width="500"
-              class="image mx-auto"
-              :class="I % 2 == 0 ? 'slide-' : '6'"
-              alt="Bambultea-Flask"
+              class="image mx-auto slide-down"
+              :alt="element.alt"
               :src="element.img"
             />
           </v-col>
@@ -30,7 +29,7 @@
         </v-row>
       </v-container>
     </v-container>
-    <div v-else id="content">
+    <v-container v-else id="content">
       <v-container
         v-for="(element, i) in elements"
         :key="i"
@@ -47,12 +46,13 @@
         <v-divider />
         <p>{{ element.text }}</p>
       </v-container>
-    </div>
+    </v-container>
     <div v-if="!$vuetify.breakpoint.smAndDown" id="scroller" />
   </v-container>
 </template>
 
 <script>
+import Scrollreveal from 'scrollreveal'
 export default {
   data() {
     return {
@@ -62,18 +62,21 @@ export default {
           text:
             'Die Bambultea Flask ist eine Thermosflasche mit 500ml Fassungsvermögen und großem Teesieb. Sie besteht zu 100% aus Bambus und Edelstahl.',
           img: 'img/bambultea-flask-detail.jpg',
+          alt: 'Bambultea-Flask',
         },
         {
           title: 'Das Design',
           text:
             'Das Design der Flasche ist sehr minimalistisch gehalten. Dabei ist eine Variation unseres Logos auf dem Deckel sowie der Seite eingraviert. Die Vorlage wurde ebenfalls von unserem Marketingleiter Erik gestaltet.',
           img: 'img/druckvorlage.png',
+          alt: 'Aufdruck Flasche',
         },
         {
           title: 'Die Produktion',
           text:
             'Produziert wird unsere Flasche von eco-drinkware, einem Flaschenproduzenten in Zheijiang, China. Eine Produktion in China erscheint vielleicht nicht intuitiv, hauptaugenmerk liegt bei uns allerdings auf den für die Produktion genutzten Materialien. Diese sind in China lokaler, der Transportfootprint ist dadurch also ähnlich.',
           img: 'img/werkzeug.png',
+          alt: 'Werkzeugkasten',
         },
       ],
       parallax: null,
@@ -95,6 +98,13 @@ export default {
   },
   mounted() {
     if (!this.$vuetify.breakpoint.smAndDown) {
+      Scrollreveal().reveal('.slide-down', {
+        origin: 'top',
+        delay: 200,
+        distance: '150px',
+        scale: 0.5,
+      })
+
       this.parallax = document.querySelector('#parallax')
       this.content = document.querySelector('#content')
       window.addEventListener('scroll', () => {
@@ -124,7 +134,6 @@ export default {
   left: 0;
   height: 100vh;
   width: 150vw;
-  overflow-x: hidden;
   display: flex;
   flex-direction: row;
 }
