@@ -61,21 +61,21 @@ export default {
           title: 'Die Flasche',
           text:
             'Die Bambultea Flask ist eine Thermosflasche mit 500ml Fassungsvermögen und großem Teesieb. Sie besteht zu 100% aus Bambus und Edelstahl.',
-          img: 'img/bambultea-flask-detail.jpg',
+          img: require('~/assets/img/bambultea-flask-detail.jpg'),
           alt: 'Bambultea-Flask',
         },
         {
           title: 'Das Design',
           text:
             'Das Design der Flasche ist sehr minimalistisch gehalten. Dabei ist eine Variation unseres Logos auf dem Deckel sowie der Seite eingraviert. Die Vorlage wurde ebenfalls von unserem Marketingleiter Erik gestaltet.',
-          img: 'img/druckvorlage.png',
+          img: require('~/assets/img/druckvorlage.png'),
           alt: 'Aufdruck Flasche',
         },
         {
           title: 'Die Produktion',
           text:
             'Produziert wird unsere Flasche von eco-drinkware, einem Flaschenproduzenten in Zheijiang, China. Eine Produktion in China erscheint vielleicht nicht intuitiv, hauptaugenmerk liegt bei uns allerdings auf den für die Produktion genutzten Materialien. Diese sind in China lokaler, der Transportfootprint ist dadurch also ähnlich.',
-          img: 'img/werkzeug.png',
+          img: require('~/assets/img/werkzeug.png'),
           alt: 'Werkzeugkasten',
         },
       ],
@@ -125,7 +125,7 @@ export default {
   width: 150vw;
   opacity: 0.35;
   background-repeat: repeat;
-  background-image: url('../static/img/background_pattern.png');
+  background-image: url('~assets/img/background_pattern.png');
   overflow-x: hidden;
 }
 #content {

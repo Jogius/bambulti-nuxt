@@ -8,6 +8,9 @@
   status = 200
 
 [[plugins]]
+  package = "netlify-plugin-hashfiles"
+
+[[plugins]]
   package = "@netlify/plugin-sitemap"
 
 [[plugins]]

@@ -139,7 +139,7 @@ export default {
   max-width: 100%;
   opacity: 0.35;
   background-repeat: repeat;
-  background-image: url('../static/img/background_pattern.png');
+  background-image: url('~assets/img/background_pattern.png');
   overflow-y: hidden;
 }
 .v-card {

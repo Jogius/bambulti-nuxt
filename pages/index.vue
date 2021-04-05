@@ -10,7 +10,7 @@
               max-width="300"
               class="Logo mx-auto slide-up"
               alt="Bambulti Logo"
-              src="img/logo.png"
+              :src="require('~/assets/img/logo.png')"
             />
             <h1 class="slide-up">Bambulti</h1>
           </v-flex>
@@ -106,19 +106,19 @@ export default {
           title: 'Die Bambultea Flask',
           text:
             'Unser erstes Produkt war die Bambultea-Flask, eine Thermosflasche aus Edelstahl und echtem Bambus mit 500ml Fassungsvermögen, Teesieb und zwei süßen Babypandas als Aufdruck.',
-          img: 'img/bambultea-flask.jpg',
+          img: require('~/assets/img/bambultea-flask.jpg'),
         },
         {
           title: 'Über uns',
           text:
             'Wir sind das Bambulti-Team, eine neunköpfige Gruppe aus Schülern des F.-F.-Runge Gymnasiums in Oranienburg.',
-          img: 'img/team.jpg',
+          img: require('~/assets/img/team.jpg'),
         },
         {
           title: 'Das Projekt',
           text:
             'Geleitet wird das Projekt von JUNIOR gGmbH. Auf Bundesebene wird JUNIOR durch das Bundesministerium für Wirtschaft und Energie, das Institut der deutschen Wirtschaft, Gesamtmetall, die AXA, die Deloitte-Stiftung, AT&T und die Citigroup unterstützt.',
-          img: 'img/junior-logo.png',
+          img: require('~/assets/img/junior-logo.png'),
         },
       ],
       parallax: null,
@@ -170,7 +170,7 @@ export default {
   max-width: 100%;
   opacity: 0.35;
   background-repeat: repeat;
-  background-image: url('../static/img/background_pattern.png');
+  background-image: url('~assets/img/background_pattern.png');
   overflow-y: hidden;
 }
 .Logo {
