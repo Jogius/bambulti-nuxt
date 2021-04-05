@@ -2,11 +2,6 @@
   publish = "dist/"
   command = "yarn generate"
 
-[[redirects]]
-  from = "/*"
-  to = "/200.html"
-  status = 200
-
 [[plugins]]
   package = "netlify-plugin-hashfiles"
 
