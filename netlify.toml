@@ -9,9 +9,6 @@
   force = true
 
 [[plugins]]
-  package = "netlify-plugin-hashfiles"
-
-[[plugins]]
   package = "@netlify/plugin-sitemap"
 
 [[plugins]]
