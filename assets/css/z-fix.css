@@ -1,0 +1,8 @@
+* {
+  z-index: +1;
+}
+
+#parallax {
+  z-index: -1;
+}
+

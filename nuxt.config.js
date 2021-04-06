@@ -26,7 +26,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['@/assets/css/scrollbar.css'],
+  css: ['@/assets/css/scrollbar.css', '@/assets/css/z-fix.css'],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
