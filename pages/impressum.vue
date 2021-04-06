@@ -103,6 +103,13 @@
         entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen werden
         wir derartige Inhalte umgehend entfernen.
       </v-card-text>
+      <v-card-text>
+        &copy; Erik Brennecke / Bambulti Logo <br />
+        &copy; Erik Brennecke / Bilder von Flaschen und Set <br />
+        &copy; Erik Brennecke (Selbstauslöser) / Teamfoto Bambulti <br />
+        &copy; JUNIOR gGmbH / Junior Logo <br />
+        &copy; nicubunu / Toolbox
+      </v-card-text>
       <v-card-actions>
         <v-btn icon href="https://www.e-recht24.de">
           <v-icon>mdi-earth</v-icon>
