@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <div id="parallax" />
-    <v-container v-if="$vuetify.breakpoint.smAndDown">
+    <v-container v-if="$vuetify.breakpoint.mdAndDown">
       <v-container
         v-for="(element, i) in elements"
         :key="i"
@@ -12,7 +12,7 @@
             <v-img
               contain
               max-width="500"
-              class="image mx-auto slide-down"
+              class="image mx-auto"
               :alt="element.alt"
               :src="element.img"
             />
@@ -38,7 +38,7 @@
         <v-img
           contain
           max-width="500"
-          class="image mx-auto"
+          class="image mx-auto slide-down"
           :alt="element.alt"
           :src="element.img"
         />
@@ -47,7 +47,7 @@
         <p>{{ element.text }}</p>
       </v-container>
     </v-container>
-    <div v-if="!$vuetify.breakpoint.smAndDown" id="scroller" />
+    <div v-if="!$vuetify.breakpoint.mdAndDown" id="scroller" />
   </v-container>
 </template>
 
@@ -97,7 +97,7 @@ export default {
     }
   },
   mounted() {
-    if (!this.$vuetify.breakpoint.smAndDown) {
+    if (!this.$vuetify.breakpoint.mdAndDown) {
       Scrollreveal().reveal('.slide-down', {
         origin: 'top',
         delay: 200,

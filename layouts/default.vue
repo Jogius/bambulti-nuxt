@@ -36,6 +36,15 @@
         </v-btn>
       </v-container>
       <v-spacer />
+      <v-btn
+        icon
+        x-large
+        href="https://www.instagram.com/bambulti_runge/"
+        target="_blank"
+        color="#C13584"
+      >
+        <v-icon large>mdi-instagram</v-icon>
+      </v-btn>
       <v-switch
         v-model="$vuetify.theme.dark"
         inset
@@ -80,6 +89,11 @@ export default {
           to: '/bambultea-flask',
           icon: 'mdi-bottle-wine-outline',
           title: 'Die Bambultea Flask',
+        },
+        {
+          to: '/shop',
+          icon: 'mdi-cart-outline',
+          title: 'Shop',
         },
       ],
     }

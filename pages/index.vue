@@ -33,8 +33,8 @@
             contain
             max-width="500"
             class="image mx-auto"
-            :class="I % 2 == 0 ? 'slide-' : '6'"
-            alt="Bambultea-Flask"
+            :class="i % 2 == 0 ? 'slide-' : '6'"
+            :alt="element.alt"
             :src="element.img"
           />
         </v-col>
@@ -65,7 +65,7 @@
               max-width="500"
               class="image mx-auto slide-left"
               :class="I % 2 == 0 ? 'slide-' : '6'"
-              alt="Bambultea-Flask"
+              :alt="element.alt"
               :src="element.img"
             />
           </v-col>
@@ -77,7 +77,7 @@
               max-width="500"
               class="image mx-auto slide-right"
               :class="I % 2 == 0 ? 'slide-' : '6'"
-              alt="Bambultea-Flask"
+              :alt="element.alt"
               :src="element.img"
             />
           </v-col>
@@ -107,18 +107,21 @@ export default {
           text:
             'Unser erstes Produkt war die Bambultea-Flask, eine Thermosflasche aus Edelstahl und echtem Bambus mit 500ml Fassungsvermögen, Teesieb und zwei süßen Babypandas als Aufdruck.',
           img: require('~/assets/img/bambultea-flask.jpg'),
+          alt: 'Bambultea Flask',
         },
         {
           title: 'Über uns',
           text:
             'Wir sind das Bambulti-Team, eine neunköpfige Gruppe aus Schülern des F.-F.-Runge Gymnasiums in Oranienburg.',
           img: require('~/assets/img/team.jpg'),
+          alt: 'Teamfoto Bambulti',
         },
         {
           title: 'Das Projekt',
           text:
-            'Geleitet wird das Projekt von JUNIOR gGmbH. Auf Bundesebene wird JUNIOR durch das Bundesministerium für Wirtschaft und Energie, das Institut der deutschen Wirtschaft, Gesamtmetall, die AXA, die Deloitte-Stiftung, AT&T und die Citigroup unterstützt.',
+            'Dieses Unternehmen ist ein nicht rechtsfähiger Verein. Geleitet wird es von JUNIOR gGmbH. Auf Bundesebene wird JUNIOR durch das Bundesministerium für Wirtschaft und Energie, das Institut der deutschen Wirtschaft, Gesamtmetall, die AXA, die Deloitte-Stiftung, AT&T und die Citigroup unterstützt.',
           img: require('~/assets/img/junior-logo.png'),
+          alt: 'Junior Logo',
         },
       ],
       parallax: null,
