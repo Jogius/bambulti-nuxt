@@ -64,7 +64,7 @@
               contain
               max-width="500"
               class="image mx-auto slide-left"
-              :class="I % 2 == 0 ? 'slide-' : '6'"
+              :class="i % 2 == 0 ? 'slide-' : '6'"
               :alt="element.alt"
               :src="element.img"
             />
@@ -76,7 +76,7 @@
               contain
               max-width="500"
               class="image mx-auto slide-right"
-              :class="I % 2 == 0 ? 'slide-' : '6'"
+              :class="i % 2 == 0 ? 'slide-' : '6'"
               :alt="element.alt"
               :src="element.img"
             />

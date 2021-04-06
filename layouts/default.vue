@@ -45,6 +45,7 @@
       >
         <v-icon large>mdi-instagram</v-icon>
       </v-btn>
+      <div class="h-spacer"></div>
       <v-switch
         v-model="$vuetify.theme.dark"
         inset
@@ -107,5 +108,8 @@ export default {
 }
 .main-wrapper {
   margin-top: 10vh;
+}
+.h-spacer {
+  margin: 0 10px;
 }
 </style>

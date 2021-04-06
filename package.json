@@ -26,6 +26,7 @@
     "@nuxt/typescript-build": "^2.0.6",
     "core-js": "^3.8.3",
     "nuxt": "^2.14.12",
+    "nuxt-stripe-module": "^3.1.7",
     "scrollreveal": "^4.0.7"
   },
   "devDependencies": {

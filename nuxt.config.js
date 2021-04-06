@@ -48,7 +48,13 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    'nuxt-stripe-module',
   ],
+
+  // nuxt-stripe-mocule configuration
+  stripe: {
+    publishableKey: process.env.STRIPE_PUBLIC_KEY,
+  },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
   content: {},
