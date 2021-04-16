@@ -5,7 +5,7 @@
       <v-col cols="12" sm="6">
         <v-carousel
           cycle
-          continuous
+          show-arrows-on-hover
           height="auto"
           :class="
             $vuetify.breakpoint.smAndDown
@@ -35,21 +35,73 @@
               outlined
               label="Menge"
               append-icon="mdi-numeric"
+              hide-details
             />
-            <v-divider />
-            <v-container>
-              <v-chip color="transparent" large>
-                <h1>Gesamt: {{ quantity * 22 }}&euro;</h1>
-              </v-chip>
-              <v-chip color="transparent" small
-                >{{ quantity }} x 22&euro;
-              </v-chip>
+            <v-container class="checkboxes">
+              <v-container>
+                Ich wohne in Oranienburg oder ~10km Umkreis
+                <v-checkbox
+                  v-model="proximity"
+                  class="shrink mr-2 mt-0"
+                  color="info"
+                  hide-details
+                />
+              </v-container>
+              <v-divider />
+              <v-container>
+                Mit dem Einkauf stimme ich den
+                <a
+                  class="info--text"
+                  target="_blank"
+                  href="https://stripe.com/de/checkout/legal"
+                >
+                  Allgemeinen Geschäftsbedingungen
+                </a>
+                und der
+                <a
+                  class="info--text"
+                  target="_blank"
+                  href="https://stripe.com/de/privacy#translation"
+                  >Datenschutzvereinbarung</a
+                >
+                der Transaktionsplattform Stripe zu
+                <v-checkbox
+                  v-model="acceptAgreements"
+                  class="shrink mr-2 mt-0"
+                  color="info"
+                  hide-details
+                />
+              </v-container>
             </v-container>
 
             <v-divider />
+            <v-container>
+              <v-chip v-if="remaining == 0" color="transparent">
+                Leider ausverkauft 😢
+              </v-chip>
+              <v-chip v-else color="transparent">
+                <v-icon small>mdi-alarm</v-icon>&nbsp; Nur noch
+                {{ remaining }} Flasche{{ remaining == 1 ? '' : 'n' }}
+                verfügbar
+              </v-chip>
+            </v-container>
+            <v-divider />
+            <v-container>
+              <v-chip color="transparent" large>
+                <h1>Gesamt: {{ quantity * 20 + (proximity ? 0 : 4) }}&euro;</h1>
+              </v-chip>
+              <v-chip color="transparent" small>
+                {{ quantity }} x 20&euro;
+                {{ proximity ? '' : ' + 4&euro; Versand' }}
+              </v-chip>
+            </v-container>
+            <v-divider />
           </v-card-text>
           <v-card-actions>
-            <v-btn @click.stop="checkoutButton">
+            <v-btn
+              :disabled="quantity > remaining || !acceptAgreements"
+              @click.stop="checkoutButton"
+            >
               <v-icon>mdi-cart-outline</v-icon> Kaufen
             </v-btn>
           </v-card-actions>
@@ -144,7 +196,11 @@
             </v-expansion-panel-header>
 
             <v-expansion-panel-content color="primary">
-              ???
+              An Orte hin unserer direkten Umgebung (Oranienburg und ~10km
+              Umkreis) liefern wir die Flaschen persönlich aus, es entstehen
+              keine Lieferkosten. <br />
+              Bei der Lieferung an andere Adressen berechnen wir Lieferkosten in
+              Höhe von 5&euro;.
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
@@ -157,8 +213,15 @@
 export default {
   data() {
     return {
+      remaining: 0,
+      proximity: false,
+      acceptAgreements: false,
       quantity: 1,
       panel: 0,
+      pos: {
+        x: 0,
+        y: 0,
+      },
       productImages: [
         {
           src: require('~/assets/img/bambultea-flask-detail.jpg'),
@@ -183,39 +246,24 @@ export default {
       ],
     }
   },
-  mounted() {
-    // if (this.$stripe) {
-    //   const elements = this.$stripe.elements()
-    //   const card = elements.create('card', {})
-    //   card.mount('#card-mount')
-    // }
-    // const el = document.querySelector('.product-image')
-    // el.addEventListener('mousemove', (e) => {
-    //   console.log(-e.offsetX)
-    //   el.style.transform = `translateX(${-e.offsetX})`
-    // })
-    // for (let i = 0; i < elements.length; i++) {
-    //   const el = elements.item(i)
-    // }
+  async mounted() {
+    const data = await this.$axios.$get(
+      process.env.apiBaseUrl + '/getRemaining'
+    )
+    if (Object.prototype.hasOwnProperty.call(data, 'remaining')) {
+      this.remaining = data.remaining
+    }
   },
   methods: {
     async checkoutButton() {
       if (this.$stripe) {
-        if (this.quantity > 3) return
+        if (this.quantity > 3 || this.quantity > this.remaining) return
+        const data = await this.$axios.$post(
+          process.env.apiBaseUrl + '/getNewSession',
+          { quantity: this.quantity, proximity: this.proximity }
+        )
         const { error } = await this.$stripe.redirectToCheckout({
-          lineItems: [
-            {
-              price: 'price_1IdDzAAup7oljgCR0t6Q0FKp',
-              quantity: this.quantity,
-            },
-          ],
-          mode: 'payment',
-          successUrl: 'https://bambulti.de/success',
-          cancelUrl: 'https://bambulti.de/shop',
-          shippingAddressCollection: {
-            allowedCountries: ['DE'],
-          },
-          submitType: 'pay',
+          sessionId: data.sessionId,
         })
         if (error) alert(error)
       }
@@ -242,7 +290,7 @@ export default {
 }
 .product-image-carousel {
   position: fixed;
-  max-width: 30vw;
+  max-width: 28vw;
   width: 100%;
   border-radius: 15px;
 }
@@ -250,12 +298,28 @@ export default {
   width: 100%;
   border-radius: 15px;
 }
-.product-image {
+
+/* .product-image {
   cursor: zoom-in;
   transform: scale(1);
+
   transition: transform 0.2s;
 }
 .product-image:hover {
   transform: scale(1.2);
+} */
+.checkboxes {
+  margin: 12px 0;
+  border: 1px solid #fff;
+  border-radius: 15px;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:active {
+  text-decoration: none;
 }
 </style>

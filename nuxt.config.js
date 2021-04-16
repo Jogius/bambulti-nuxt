@@ -48,12 +48,13 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxtjs/axios',
     'nuxt-stripe-module',
   ],
 
   // nuxt-stripe-mocule configuration
   stripe: {
-    publishableKey: process.env.STRIPE_PUBLIC_KEY,
+    publishableKey: process.env.BBT_STRIPE_PUBLIC_KEY,
   },
 
   // Content module configuration: https://go.nuxtjs.dev/config-content
@@ -94,5 +95,9 @@ export default {
 
   generate: {
     fallback: true,
+  },
+
+  env: {
+    apiBaseUrl: process.env.BBT_SERVER_URL,
   },
 }
