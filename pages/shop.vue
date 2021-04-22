@@ -196,11 +196,11 @@
             </v-expansion-panel-header>
 
             <v-expansion-panel-content color="primary">
-              An Orte hin unserer direkten Umgebung (Oranienburg und ~10km
+              An Orte in unserer direkten Umgebung (Oranienburg und ~10km
               Umkreis) liefern wir die Flaschen persönlich aus, es entstehen
               keine Lieferkosten. <br />
               Bei der Lieferung an andere Adressen berechnen wir Lieferkosten in
-              Höhe von 5&euro;.
+              Höhe von 4&euro;.
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
